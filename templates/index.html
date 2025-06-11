@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+    <h1>Welcome to my website!</h1>
+    <p>This is the homepage</p>
+
+    <div style="display: flex; margin: 0 auto; width: 50%">
+        <form method="post" action="/" id="dynamicForm">
+            <div style="padding-bottom:25px;">
+                    <button type="button" id="addInput" class="btn btn-primary">Add input</button>
+                    <button type="button" id="removeInput" class="btn btn-danger">Remove input</button>
+                    <button type="submit" class="btn btn-success ">Send</button>
+                </div>
+            <div >
+                <div id="inputs" style="display: flex; flex-direction: column; margin: 0 auto;">
+                    <input type="text" name="input1" placeholder="Имя"  class="dynamic-input" style="margin-bottom: 10px"/>
+                </div>
+
+            </div>
+        </form>
+    </div>
+{% endblock %}
