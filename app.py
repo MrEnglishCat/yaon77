@@ -1,11 +1,14 @@
 import json
 import pickle
+import time
+
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from environs import Env
 import os
 from flask_migrate import upgrade, migrate, init
+from sqlalchemy.orm.sync import update
 
 env = Env()
 env.read_env('.env')
@@ -20,7 +23,7 @@ class Config:
 app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)
+main_migrate = Migrate(app, db)
 
 
 class Form(db.Model):
@@ -59,11 +62,14 @@ def results():
 
 def apply_migrations(app):
     with app.app_context():
+        time.sleep(10)
+        db.create_all()
         migrations_folder = os.path.join(os.path.dirname(__file__), 'migrations')
         if os.path.exists(migrations_folder):
             try:
                 print("Применяю миграции...")
                 upgrade()
+
             except Exception as e:
                 print(f"Ошибка применения миграций: {e}")
         else:
@@ -71,6 +77,7 @@ def apply_migrations(app):
             init()
             print("Применение миграций...")
             migrate()
+            update()
 
 def create_app():
     apply_migrations(app)

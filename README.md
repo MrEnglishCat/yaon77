@@ -4,13 +4,15 @@
 
 ### 1. Клонировать репозиторий:
 ```bash
-git clone https://github.com/ваш-аккаунт/flask-dynamic-form.git 
-cd flask-dynamic-form
+git clone https://github.com/MrEnglishCat/yaon77.git 
 
+cd yaon77
 
-python3 -m venv venv
-source venv/bin/activate  # Linux/Mac
+### ```Если```
+
+python3 -m venv .venv
+source .venv/bin/activate  # Linux/Mac
 # или
-venv\Scripts\activate     # Windows
+.venv\Scripts\activate     # Windows
 
-pip install -r requirements.txt
+pip install -r requirements.txt # установка зависимостей
