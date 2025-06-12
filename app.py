@@ -45,25 +45,7 @@ def results():
     data = Form.query.all()
     return render_template("results.html", data=data)
 
-def apply_migrations():
-    with app.app_context():
-        time.sleep(5)  # Ждём подключения к БД
-        migrations_folder = os.path.join(os.path.dirname(__file__), 'migrations')
-        if os.path.exists(migrations_folder):
-            print("Применяю миграции...")
-            try:
-                upgrade()
-            except Exception as e:
-                print(f"Ошибка применения миграции: {e}")
-        else:
-            print("Инициализирую миграции...")
-            init()
-            migrate()
-            upgrade()
 
-def create_app():
-    # apply_migrations()
-    return app
 
 if __name__ == "__main__":
-    create_app().run(debug=True)
+    app().run(debug=True)
