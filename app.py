@@ -25,6 +25,9 @@ class Form(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     json = db.Column(db.PickleType)
 
+
+
+
 @app.template_filter('to_nice_json')
 def to_nice_json(value):
     return json.dumps(value, indent=2)
