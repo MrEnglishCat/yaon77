@@ -36,7 +36,7 @@ https://docs.docker.com/engine/install/
 
 
 ```
-docker-compose up --build
+docker compose up --build
 ```
 ## Ниже что связано с PgAdmin - нужно только для просмотра базы данных. Для работы самого приложения он не нужен. 
 После запуска контейнеров можно сразу переходить к пункту 6. На страницу Flask app.
